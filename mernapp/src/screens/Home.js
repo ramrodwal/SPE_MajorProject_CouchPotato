@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar'
 export default function
   () {
   return (
+    //we can send only one div in return and if we want multiple divs we need nested divs
     <div>
 
       <div> <Navbar /> </div>
