@@ -1,0 +1,58 @@
+[
+  {
+    "id": 0,
+    "productName": "Family Farm Almonds",
+    "image": "//cdn.grofers.com/app/images/products/full_screen/pro_400111.jpg",
+    "quantity": "200g",
+    "price": "₹592",
+    "description": "Make a healthy and tasty addition to both sweet and savoury dishes with Almonds Dry Fruit. It is consumed raw and is sprinkled over a variety of recipes like desserts, sundaes, biscuits, cakes and ice cream based preparations."
+  },
+  {
+    "id": 1,
+    "productName": "Nutraj Premium California Pistachios",
+    "image": "//cdn.grofers.com/app/images/products/full_screen/pro_423354.jpg",
+    "quantity": "200g",
+    "price": "₹379",
+    "description": "A wonder snack for a nutritious and wholesome experience is this Nutraj pack of roasted and salted California pistachios, rich in proteins, fiber and anti-Oxidants. Low cholesterol nut with zero trans fat."
+  },
+  {
+    "id": 2,
+    "productName": "Nutraj California Almonds",
+    "image": "//cdn.grofers.com/app/images/products/full_screen/pro_156145.jpg",
+    "quantity": "500 g",
+    "price": "₹380",
+    "description": "100% natural, nutritious and delicious, naturally high in Vitamin E and Manganese, making them a great addition to your diet, almonds are packed with protein essential for muscle building."
+  },
+  {
+    "id": 3,
+    "productName": "Nutraj California In Shell Walnuts (Pouch)",
+    "image": "//cdn.grofers.com/app/images/products/full_screen/pro_423351.jpg",
+    "quantity": "1 kg",
+    "price": "₹999",
+    "description": "Rich in vitamin E, melatonin omega,3 fats and antioxidants. Whole walnuts preserve the freshness and Also helps in maintaining brain health and Controls the growth of cancer cells & has many more benefits."
+  },
+  {
+    "id": 4,
+    "productName": "Organic Tattva Peanuts",
+    "image": "//cdn.grofers.com/app/images/products/full_screen/pro_13465.jpg",
+    "quantity": "500 g",
+    "price": "₹145",
+    "description": "Organic Tattva Peanuts arare highly nutritious and tasty. Add them to your breakfast dishes or just roast them and consume as a snack to enjoy the delicious taste. Peanuts contain vitamins and minerals that are necessary for your well-being. They are rich in proteins and healthy fats like omega-3 and omega-6 that reduce your risk of heart disease. Can be used as the perfect ingredient in savoury dishes for a delectable taste."
+  },
+  {
+    "id": 5,
+    "productName": "Nutraj Signature Fig (Anjeer)",
+    "image": "//cdn.grofers.com/app/images/products/full_screen/pro_423352.jpg",
+    "quantity": "400 g",
+    "price": "₹699",
+    "description": "Fresh, sweet, and dried figs have been naturally preserved with no additives. Figs contain pectin that stimulates healthy movement and expels cholesterol out of body. They are good for stamina and boost energy, and also help fight sexual weakness."
+  },
+  {
+    "id": 6,
+    "productName": "Nutraj Seedless Turkish Dried Apricots (Pouch)",
+    "image": "//cdn.grofers.com/app/images/products/full_screen/pro_423348.jpg",
+    "quantity": "200 g",
+    "price": "₹119",
+    "description": "Most juicy and full of sunshine goodness. Packed with loads of fibre and goodness.Good source of potassium and magnesium. Enjoy healthy snacking for better living."
+  }
+]
