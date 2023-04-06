@@ -3,6 +3,10 @@ const router = express.Router()
 const user = require('../models/User')
 const { body, validationResult } = require('express-validator');
 
+const jwtSecret = "hello my name is ram";
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs');
+
 router.post("/createUser", [
   body('email').isEmail(),
   body('name').isLength({ min: 5 }),
@@ -14,11 +18,16 @@ router.post("/createUser", [
     return res.status(400).json({ errors: errors.array() });
   }
 
+  //gensalt function is used to generate the salt value for our password encryption
+  //any random value like 10 can be given inside the function
+  const salt = await bcrypt.genSalt(10);
+  // we use await because bcrypt has async functions
+  let securePassword = await bcrypt.hash(req.body.password, salt)
   try {
 
     await user.create({
       name: req.body.name,
-      password: req.body.password,
+      password: securePassword,
       email: req.body.email,
       location: req.body.location
     })
@@ -52,13 +61,21 @@ router.post("/loginuser", [
       return res.status(400).json({ errors: "email not registered" });
     }
 
-    if (req.body.password !== userData.password) {
+    //here we are comparing the password entered by the user to the hashed password stored in mongodb
+    const pwdCompare = await bcrypt.compare(req.body.password, userData.password);
+    if (!pwdCompare) {
       return res.status(400).json({ errors: "incorrect password" });
     }
 
-    else {
-      res.json({ success: true });
-    }
+      const data = {
+        user:{
+          id:userData.id
+        }
+      }
+      
+      const authToken = jwt.sign(data, jwtSecret);
+      res.json({ success: true, authToken: authToken });
+    
 
 
   } catch (error) {
