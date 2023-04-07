@@ -1,10 +1,18 @@
 import React from 'react'
 
 //react router dom is used to make the application single page and in this we use "to" instead of "href" as href takes us to a new page
-import { Link } from 'react-router-dom';
-import bootstrap from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import bootstrap, { Badge } from 'react-bootstrap';
+
+
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const handleLogout = ()=>{
+    localStorage.removeItem("authToken");
+    navigate("/login");
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-success">
@@ -15,18 +23,37 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav me-auto mb-2">
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/Login">Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/createuser">Signup</Link>
+                <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
               </li>
 
+              {(localStorage.getItem("authToken")) ?
+                <li className="nav-item">
+                  <Link className="nav-link active fs-5" aria-current="page" to="/">My Orders</Link>
+                </li>
+                : ""}
+
             </ul>
+            {(!localStorage.getItem("authToken")) ?
+              /* here d-flex class means that login aur signup button inline ajae kyuki by default div me ek k niche ek ate hai */
+              <div className='d-flex'>
+                <Link className="btn bg-white text-success mx-1" to="/Login">Login</Link>
+                <Link className="btn bg-white text-success mx-1" to="/createuser">Signup</Link>
+              </div>
+              :<div>
+              <div className="btn bg-white text-success mx-2" >
+                My Cart{" "}
+                <Badge pill bg='danger'>2</Badge>
+              </div> 
+              
+              <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>
+                Logout
+              </div>
+              </div>
+            }
+
+
           </div>
         </div>
       </nav>

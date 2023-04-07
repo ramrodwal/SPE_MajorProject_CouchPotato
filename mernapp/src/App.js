@@ -11,11 +11,17 @@ import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
 import Signup from './screens/Signup';
+import { CartProvider } from './components/ContextReducer';
 
 
 function App() {
   return (
-    //we can send only one div in return and if we want multiple divs we need nested divs
+
+    //isko cartProvider me isiliye wrap kiya hai taki kahi bhi ContextReducer me jo dispatch banaya hai
+    //use kahi bhi use kr sake
+    <CartProvider>
+
+    {/* we can send only one div in return and if we want multiple divs we need nested divs */}
     <Router>
     
     <div>
@@ -29,6 +35,7 @@ function App() {
     </div>
     
     </Router>
+    </CartProvider>
   );
 }
 

@@ -24,5 +24,5 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-//yaha se model export hoga taki model me apan CRUD operations perform kr sake
+//yaha se model export hoga taki model me apan CRUD operations perform kr sake 
 module.exports = mongoose.model('user', UserSchema);

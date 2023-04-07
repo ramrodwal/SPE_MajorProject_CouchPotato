@@ -92,10 +92,7 @@ export default function Home() {
                         //col-md-12 matlb kab screen medium size ki ho to 6 cols use ho grid k jisme card show hoga
                         //
                         <div key={filterItems._id} className='col-12 col-md-6 col-lg-3'>
-                          <Card foodName={filterItems.productName}
-                            imgSrc={filterItems.image}
-                            description={filterItems.description}
-                            quantity={filterItems.quantity}
+                          <Card foodItem={filterItems}
                           ></Card>
                         </div>
                       )
