@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 //react router dom is used to make the application single page and in this we use "to" instead of "href" as href takes us to a new page
 import { Link, useNavigate } from 'react-router-dom';
-import bootstrap, { Badge } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
+import Model from '../Model';
+import Cart from '../screens/Cart';
 
 
 
 export default function Navbar() {
+
+  const [cartView, setCartView] = useState(false);
+
   const navigate = useNavigate();
   const handleLogout = ()=>{
     localStorage.removeItem("authToken");
@@ -42,11 +47,11 @@ export default function Navbar() {
                 <Link className="btn bg-white text-success mx-1" to="/createuser">Signup</Link>
               </div>
               :<div>
-              <div className="btn bg-white text-success mx-2" >
+              <div className="btn bg-white text-success mx-2" onClick={()=>{setCartView(true)}} >
                 My Cart{" "}
                 <Badge pill bg='danger'>2</Badge>
               </div> 
-              
+              {cartView ? <Model onClose={()=>{setCartView(false)}} ><Cart/></Model> : null}
               <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>
                 Logout
               </div>
