@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
-import Carousel from '../components/Carousel'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 
 export default function Home() {
 
+  const [search, setSearch] = useState('');
   //yaha par use state me default value iski array lere hai kyuki agar object lete to uspe map function nai laga pate
   const [item_category, setItem_category] = useState([]);
   const [food_items, setFlours] = useState([]);
@@ -42,10 +42,10 @@ export default function Home() {
         <div className="carousel-inner" id='carousel'>
           {/* here index is set to value > 0 so that the search bar comes above the carausel in the frontend */}
           <div className='carousel-caption' style={{ zIndex: "10" }}>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success text-white " type="submit">Search</button>
-            </form>
+            <div class="d-flex justify-content-center">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e)=>{setSearch(e.target.value)}} />
+              {/* <button class="btn btn-outline-success text-white " type="submit">Search</button> */}
+            </div>
           </div>
 
           <div className="carousel-item active">
@@ -83,7 +83,7 @@ export default function Home() {
                 <hr />
                 {food_items !== []
                   ?
-                  food_items.filter((item) => item.CategoryName === data.CategoryName)
+                  food_items.filter((item) => (item.CategoryName === data.CategoryName) && (item.productName.toLowerCase().includes(search.toLocaleLowerCase()))) 
                     .map(filterItems => {
                       return (
                         // apna jo front page hota hai 12 x 12 k grids me 
