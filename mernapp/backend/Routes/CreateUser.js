@@ -67,15 +67,15 @@ router.post("/loginuser", [
       return res.status(400).json({ errors: "incorrect password" });
     }
 
-      const data = {
-        user:{
-          id:userData.id
-        }
+    const data = {
+      user: {
+        id: userData.id
       }
-      
-      const authToken = jwt.sign(data, jwtSecret);
-      res.json({ success: true, authToken: authToken });
-    
+    }
+
+    const authToken = jwt.sign(data, jwtSecret);
+    res.json({ success: true, authToken: authToken });
+
 
 
   } catch (error) {
