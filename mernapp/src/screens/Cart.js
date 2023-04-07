@@ -1,11 +1,12 @@
-import React from 'react'
-
+import React, { useState }  from 'react'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
+import { FaTrash } from 'react-icons/fa';
 export default function Cart() {
+  const [cartData, setData] = useState([]);
   // ye useCart ContextReducer se export hora hai aur disapatchCart bhi 
   let data = useCart();
   let dispatch = useDispatchCart();
-  if (data.length === 0) {
+  if (!data || data.length === 0) {
     return (
       <div>
         <div className='m-5 w-100 text-center fs-3 text-white'>The Cart is Empty!</div>
@@ -16,7 +17,8 @@ export default function Cart() {
   //   console.log(index)
   //   dispatch({type:"REMOVE",index:index})
   // }
-
+  
+  
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
@@ -38,6 +40,9 @@ export default function Cart() {
       dispatch({ type: "DROP" })
     }
   }
+  const handleRemove = (index) => {
+    dispatch({ type: "REMOVE", index: index });
+  };
 
   let totalPrice = data.reduce((total, food) => total + food.price, 0)
   return (
@@ -58,13 +63,20 @@ export default function Cart() {
           </thead>
           <tbody style={{"color" : "white"}}>
             {data.map((food, index) => (
-              <tr>
+              <tr key={index}>
                 <th scope='row' >{index + 1}</th>
                 <td >{food.name}</td>
                 <td>{food.qty}</td>
                 {/* <td>{food.size}</td> */}
                 <td>{food.price}</td>
-                <td ><button type="button" className="btn p-0 text-white" onClick={() => { dispatch({ type: "REMOVE", index: index }) }} >X</button> </td></tr>
+                {/* <td ><button type="button" className="btn p-0 text-white" onClick={() => { dispatch({ type: "REMOVE", index: index }) }} >X</button> </td></tr> */}
+                
+                <td >
+                  <button type="" className="btn p-0" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}><FaTrash />
+</button>
+
+
+</td></tr>
             ))}
           </tbody>
         </table>
