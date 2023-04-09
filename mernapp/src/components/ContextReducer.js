@@ -13,15 +13,16 @@ const reducer = (state, action) => {
         case "REMOVE":
             return state.filter((item, index) => index !== action.index);
         case "DROP":
-            return [];
-            case "UPDATE":
-                return state.map((food) => {
-                    if (food.id === action.id) {
-                        return { ...food, qty: parseInt(action.qty) + food.qty, price: action.price + food.price }
-                    }
-                    return food;
-                });
-            
+            let emptyArray = []
+            return emptyArray;
+        case "UPDATE":
+            return state.map((food) => {
+                if (food.id === action.id) {
+                    return { ...food, qty: parseInt(action.qty) + food.qty, price: action.price + food.price }
+                }
+                return food;
+            });
+
         default:
             console.log("error in reducer");
     }
