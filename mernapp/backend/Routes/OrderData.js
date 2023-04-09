@@ -6,7 +6,8 @@ const { compareSync } = require('bcryptjs')
 router.post('/orderData', async(req, res) =>{
 
     let data = req.body.order_data
-    await data.splice(0, 0, {Order_date: req.body.order_data})
+    // await data.splice(0, 0, {Order_date: req.body.order_data})
+    data.unshift({order_date: req.body.order_date})
 
     //if email not existing in db the create: else: InsertMany()
     let eId = await Order.findOne({'email': req.body.email})
