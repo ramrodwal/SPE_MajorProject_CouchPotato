@@ -9,7 +9,7 @@ const mongoDB = require("./db");
 // const { Next } = require('react-bootstrap/esm/PageItem');
 mongoDB();
 app.use(cors({
-  origin: 'http://frontend-server-domain'
+  origin: '*'
 }));
 
 
