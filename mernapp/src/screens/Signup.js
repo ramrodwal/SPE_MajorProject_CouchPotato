@@ -12,6 +12,7 @@ export default function Signup() {
       method: 'POST',
       //specified the header in thunderclient
       headers: {
+        'mode':'cors',
         'Content-Type': 'application/json'
       },
       //json data ko stringify krke bhejte hai kyuki yahi tarika hota hai
