@@ -12,11 +12,12 @@ export default function Signup() {
       method: 'POST',
       //specified the header in thunderclient
       headers: {
-        'mode':'cors',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
       //json data ko stringify krke bhejte hai kyuki yahi tarika hota hai
-      body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation })
+      body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation }),
+      mode: 'cors'
     });
 
     const json = await response.json()
