@@ -12,6 +12,10 @@ app.use(cors({
   origin: '*'
 }));
 
+app.use(cors({
+  methods:['GET','POST','PUT','DELETE']
+}));
+
 
 //we did this because of CORS error coming when we were trying to submit a form
 app.use((req, res, next)=> {
@@ -19,7 +23,7 @@ app.use((req, res, next)=> {
    res.setHeader("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept,Auhtorization"
   );
   next();
 });
