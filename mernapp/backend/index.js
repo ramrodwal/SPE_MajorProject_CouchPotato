@@ -2,15 +2,21 @@
 // windows powershell ko run as administrator me khol ke "Set-ExecutionPolicy RemoteSigned" ye command chalaya tha  
 
 const express = require('express')
+const cors = require('cors');
 const app = express()
 const port = 5000
 const mongoDB = require("./db");
 // const { Next } = require('react-bootstrap/esm/PageItem');
 mongoDB();
+app.use(cors({
+  origin: 'http://frontend-server-domain'
+}));
+
 
 //we did this because of CORS error coming when we were trying to submit a form
 app.use((req, res, next)=> {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+   res.setHeader("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
