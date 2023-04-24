@@ -13,7 +13,21 @@ code {
     monospace;
 }
 
-#carousel{
+#carousel {
   max-height: 500px;
 }
 
+.signup-container {
+  background-image: url('https://img.freepik.com/free-vector/aisle-grocery-store-shelves-vector-background_107791-19118.jpg?size=626&ext=jpg&ga=GA1.1.15502642.1682318452&semt=ais');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px
+}
