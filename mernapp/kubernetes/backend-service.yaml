@@ -11,10 +11,10 @@ spec:
     port: 90
     targetPort: 5000
     
-  # cors:
-  #   - maxAgeSeconds: 3600
-  #     allowedOrigins:
-  #       - http://192.168.49.2:32292/
+  cors:
+    # - maxAgeSeconds: 3600
+    - allowedOrigins:
+        - http://192.168.49.2:32292/
 
 
   type: NodePort
