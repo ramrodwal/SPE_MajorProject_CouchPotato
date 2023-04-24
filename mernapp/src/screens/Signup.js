@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
+
+  const navigate= useNavigate();
 
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", geolocation: "" });
 
   const handleSubmit = async (e) => {
     //this is a synthetic event i.e preventDefault
     e.preventDefault();
-    const response = await fetch("http://192.168.49.2:30189/api/createuser", {
+    const response = await fetch("http://localhost:5000/api/createuser", {
+    // const response = await fetch("http://192.168.49.2:30189/api/createuser", {
       method: 'POST',
       //specified the header in thunderclient
       headers: {
@@ -25,6 +29,9 @@ export default function Signup() {
 
     if (!json.success) {
       alert("enter valid credentials")
+    }
+    else{
+      navigate("/Login");
     }
 
   }
