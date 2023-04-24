@@ -15,12 +15,6 @@ const logger = createLogger({
       filename: "LogFile.log",
       level: "info",
     }),
-    new winston.transports.Fluentd({
-      host: "fluentd-service",
-      port: 24224,
-      timeout: 3.0,
-      requireAckResponse: true
-    })
   ],
 });
 
