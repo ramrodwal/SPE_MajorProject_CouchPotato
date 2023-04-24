@@ -30,5 +30,5 @@ spec:
         volumes:
       - name: logs
         hostPath:
-          path: /Desktop/logs/Frontendlogs
+          path: /var/logs/Frontendlogs
           type: Directory
