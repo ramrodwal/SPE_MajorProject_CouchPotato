@@ -10,8 +10,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     //this is a synthetic event i.e preventDefault
     e.preventDefault();
-    // const response = await fetch("http://localhost:5000/api/loginuser", {
-    const response = await fetch("http://192.168.49.2:30189/api/loginuser", {
+    const response = await fetch("http://localhost:5000/api/loginuser", {
+    // const response = await fetch("http://192.168.49.2:30189/api/loginuser", {
       method: 'POST',
       //specified the header in thunderclient
       headers: {
