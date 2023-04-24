@@ -11,12 +11,13 @@ export default function Home() {
   const [food_items, setFlours] = useState([]);
 
   const loadData = async () => {
-    let response = await fetch("http://localhost:5000/api/food-data", {
+    // let response = await fetch("http://localhost:5000/api/food-data", {
 
-    // let response = await fetch("http://backend-service:90/api/food-data", {
+    let response = await fetch("http://192.168.49.2:30189/api/food-data", {
     method: "POST",
       headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     }
   });
 

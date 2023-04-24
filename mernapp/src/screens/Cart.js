@@ -22,13 +22,14 @@ export default function Cart() {
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
-    let response = await fetch("http://localhost:5000/api/orderData", {
-      // let response = await fetch("http://backend-service:90/api/orderData", {
+    // let response = await fetch("http://localhost:5000/api/orderData", {
+      let response = await fetch("http://192.168.49.2:30189/api/orderData", {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({
         order_data: data,

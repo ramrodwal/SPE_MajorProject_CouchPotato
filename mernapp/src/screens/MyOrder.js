@@ -8,14 +8,15 @@ export default function MyOrder() {
 
     const fetchMyOrder = async () => {
         console.log(localStorage.getItem('userEmail'))
-        await fetch("http://localhost:5000/api/myorderData", {
-        // await fetch("http://backend-service:90/api/myorderData", {
+        // await fetch("http://localhost:5000/api/myorderData", {
+        await fetch("http://192.168.49.2:30189/api/myorderData", {
 
             // credentials: 'include',
             // Origin:"http://localhost:3000/login",
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify({
                 email: localStorage.getItem('userEmail')
