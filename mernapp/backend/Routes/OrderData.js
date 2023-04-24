@@ -2,8 +2,14 @@ const express = require('express')
 const router = express.Router()
 const Order = require('../models/Orders')
 const { compareSync } = require('bcryptjs')
+const logger = require("../utils/logger");
 
 router.post('/orderData', async(req, res) =>{
+
+    logger.log({
+        level: "info",
+        message: "Order place request",
+    });
 
     let data = req.body.order_data
     // await data.splice(0, 0, {Order_date: req.body.order_data})

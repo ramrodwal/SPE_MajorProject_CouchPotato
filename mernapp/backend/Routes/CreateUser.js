@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const user = require('../models/User')
 const { body, validationResult } = require('express-validator');
+const logger = require("../utils/logger");
+
 
 const jwtSecret = "hello my name is ram";
 const jwt = require('jsonwebtoken')
@@ -13,6 +15,10 @@ router.post("/createUser", [
   // password must be at least 5 chars long
   body('password', 'incorrect password').isLength({ min: 5 })
 ], async (req, res) => {
+  logger.log({
+    level: "info",
+    message: "create User Called",
+});
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -32,10 +38,19 @@ router.post("/createUser", [
       location: req.body.location
     })
     res.json({ success: true });
+    logger.log({
+      level: "info",
+      message: "user registered successfully",
+  });
 
   } catch (error) {
     console.log("there is an error");
-    res.json({ success: true });
+    res.json({ success: false });
+    logger.log({
+      level: "info",
+      message: "user failed to register",
+  });
+
   }
 
 })
@@ -46,7 +61,10 @@ router.post("/loginuser", [
   // password must be at least 5 chars long
   body('password', 'incorrect password').isLength({ min: 5 })
 ], async (req, res) => {
-
+  logger.log({
+    level: "info",
+    message: "login User Called",
+});
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -75,7 +93,10 @@ router.post("/loginuser", [
 
     const authToken = jwt.sign(data, jwtSecret);
     res.json({ success: true, authToken: authToken });
-
+    logger.log({
+      level: "info",
+      message: "user logged in successfully",
+  });
 
 
   } catch (error) {
