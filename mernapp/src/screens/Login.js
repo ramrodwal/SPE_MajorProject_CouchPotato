@@ -35,48 +35,93 @@ export default function Login() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-lg-6 col-md-8 col-sm-10">
-          <form onSubmit={handleSubmit}>
-            <h1 className="mb-3">Log In</h1>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email Address
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                value={credentials.email}
-                onChange={onChange}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                value={credentials.password}
-                onChange={onChange}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-success">
-              Log In
-            </button>
-            <Link to="/createuser" className="btn btn-link">
-              Create an Account
-            </Link>
-          </form>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      backgroundImage: "url('https://img.freepik.com/premium-photo/paper-bag-with-healthy-food-healthy-food-background-supermarket-food-concept-shopping-supermarket-home-delivery_167368-269.jpg?w=2000')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
+      <form onSubmit={handleSubmit} style={{
+        width: '350px',
+        padding: '30px',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
+        background: '#ffffff',
+      }}>
+        <h1 style={{
+          marginBottom: '20px',
+          textAlign: 'center',
+          color: '#333333',
+          fontSize: '24px',
+        }}>Log In</h1>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor="email" style={{
+            display: 'block',
+            marginBottom: '5px',
+            color: '#666666',
+            fontSize: '14px',
+          }}>Email Address</label>
+          <input
+            type="email"
+            style={{
+              width: '100%',
+              padding: '10px',
+              border: '1px solid #cccccc',
+              borderRadius: '5px',
+              fontSize: '14px',
+            }}
+            id="email"
+            name="email"
+            value={credentials.email}
+            onChange={onChange}
+            required
+          />
         </div>
-      </div>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor="password" style={{
+            display: 'block',
+            marginBottom: '5px',
+            color: '#666666',
+            fontSize: '14px',
+          }}>Password</label>
+          <input
+            type="password"
+            style={{
+              width: '100%',
+              padding: '10px',
+              border: '1px solid #cccccc',
+              borderRadius: '5px',
+              fontSize: '14px',
+            }}
+            id="password"
+            name="password"
+            value={credentials.password}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <button type="submit" style={{
+          width: '100%',
+          padding: '10px',
+          border: 'none',
+          borderRadius: '5px',
+          background: '#4CAF50',
+          color: '#ffffff',
+          fontSize: '16px',
+          cursor: 'pointer',
+        }}>Log In</button>
+        <p style={{
+          marginTop: '10px',
+          textAlign: 'center',
+          color: '#666666',
+          fontSize: '14px',
+        }}>
+          Don't have an account? <Link to="/signup" style={{ color: '#4CAF50', textDecoration: 'none' }}>Sign up here</Link>
+        </p>
+      </form>
     </div>
   );
 }
