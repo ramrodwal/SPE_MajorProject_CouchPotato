@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: vartikach02/client:latest
+        image: ramrodwal/client:latest
         ports:
         - containerPort: 3000
         resources:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: vartikach02/server:latest
+        image: ramrodwal/server:latest
         ports:
         - containerPort: 5000
         resources:
