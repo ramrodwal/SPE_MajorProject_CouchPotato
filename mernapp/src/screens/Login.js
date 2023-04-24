@@ -15,7 +15,8 @@ export default function Login() {
       method: 'POST',
       //specified the header in thunderclient
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
       //json data ko stringify krke bhejte hai kyuki yahi tarika hota hai
       body: JSON.stringify({ email: credentials.email, password: credentials.password })
