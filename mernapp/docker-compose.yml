@@ -52,3 +52,5 @@ services:
 networks:
   mern-app:
     driver: bridge
+
+#use the original api(for backend) : http://localhost:5000/

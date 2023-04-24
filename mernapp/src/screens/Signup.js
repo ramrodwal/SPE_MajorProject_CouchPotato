@@ -11,7 +11,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     //this is a synthetic event i.e preventDefault
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/createuser", {
+    const response = await fetch("http://backend-service:90/api/createuser", {
     // const response = await fetch("http://192.168.49.2:30189/api/createuser", {
       method: 'POST',
       //specified the header in thunderclient
