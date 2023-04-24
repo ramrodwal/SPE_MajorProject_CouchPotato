@@ -16,7 +16,8 @@ export default function Home() {
     let response = await fetch("http://192.168.49.2:30189/api/food-data", {
     method: "POST",
       headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     }
   });
 
