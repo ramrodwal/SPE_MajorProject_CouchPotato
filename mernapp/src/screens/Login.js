@@ -119,7 +119,7 @@ export default function Login() {
           color: '#666666',
           fontSize: '14px',
         }}>
-          Don't have an account? <Link to="/signup" style={{ color: '#4CAF50', textDecoration: 'none' }}>Sign up here</Link>
+          Don't have an account? <Link to="/createuser" style={{ color: '#4CAF50', textDecoration: 'none' }}>Sign up here</Link>
         </p>
       </form>
     </div>
