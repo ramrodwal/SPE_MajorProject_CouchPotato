@@ -21,6 +21,8 @@ services:
       # will be connected to the mern-app network,
       #  which will allow it to communicate with 
       #other services on that network.
+    volumes:
+      - ./logs:/usr/src/app/logs
     networks:
       - mern-app
     # This sets the name of the container running 
