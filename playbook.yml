@@ -1,6 +1,6 @@
 ---
 - name: Deploy Docker Images
-  hosts: all
+  hosts: client1
   # vars_files:
   # - ./backend/env-enc.yaml
   tasks:
