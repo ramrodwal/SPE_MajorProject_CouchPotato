@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { PORT } from '../components/Constants';
 
 export default function Signup() {
 
@@ -13,7 +14,7 @@ export default function Signup() {
     e.preventDefault();
     // const response = await fetch("http://localhost:5000/api/createuser", {
     // const response = await fetch("http://192.168.49.2:30189/api/createuser", {
-      const response = await fetch("http://192.168.58.2:31685/api/createuser", {
+      const response = await fetch(`http://192.168.58.2:${PORT}/api/createuser`, {
       method: 'POST',
       //specified the header in thunderclient
       headers: {

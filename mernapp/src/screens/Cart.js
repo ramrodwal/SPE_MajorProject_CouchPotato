@@ -1,6 +1,8 @@
 import React, { useState }  from 'react'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
 import { FaTrash } from 'react-icons/fa';
+import { PORT } from '../components/Constants';
+
 export default function Cart() {
   const [cartData, setData] = useState([]);
   // ye useCart ContextReducer se export hora hai aur disapatchCart bhi 
@@ -23,7 +25,7 @@ export default function Cart() {
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
     // let response = await fetch("http://localhost:5000/api/orderData", {
-      let response = await fetch("http://192.168.58.2:31685/api/orderData", {
+      let response = await fetch(`http://192.168.58.2:${PORT}/api/orderData`, {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: 'POST',

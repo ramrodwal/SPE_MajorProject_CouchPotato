@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import { PORT } from '../components/Constants';
 
 export default function Login() {
 
@@ -11,7 +12,7 @@ export default function Login() {
     //this is a synthetic event i.e preventDefault
     e.preventDefault();
     // const response = await fetch("http://localhost:5000/api/loginuser", {
-    const response = await fetch("http://192.168.58.2:31685/api/loginuser", {
+    const response = await fetch(`http://192.168.58.2:${PORT}/api/loginuser`, {
       method: 'POST',
       //specified the header in thunderclient
       headers: {
