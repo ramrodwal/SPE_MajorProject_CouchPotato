@@ -1,39 +1,3 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: backend
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: backend
-#   template:
-#     metadata:
-#       labels:
-#         app: backend
-#     spec:
-#       containers:
-#       - name: backend
-#         image: ramrodwal/server:latest
-#         ports:
-#         - containerPort: 5000
-#         # volumeMounts:
-#         # - name: logs
-#         #   mountPath: /app/logs
-#         resources:
-#           limits:
-#             cpu: "1"
-#             memory: "1Gi"
-#           requests:
-#             cpu: "0.5"
-#             memory: "500Mi"
-#       # volumes:
-#       # - name: logs
-#       #   hostPath:
-#       #     path: /var/logs/Backendlogs
-#       #     type: Directory
-
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -53,9 +17,9 @@ spec:
         image: ramrodwal/server:latest
         ports:
         - containerPort: 5000
-        volumeMounts:
-        - name: logs
-          mountPath: /usr/src/app/logs
+        # volumeMounts:
+        # - name: logs
+        #   mountPath: /app/logs
         resources:
           limits:
             cpu: "1"
@@ -63,9 +27,10 @@ spec:
           requests:
             cpu: "0.5"
             memory: "500Mi"
-      volumes:
-      - name: logs
-        hostPath:
-          path: /home/ram/Documents/SPE_MajorProject_CouchPotato/mernapp/Logfile.log
-          type: Directory
+      # volumes:
+      # - name: logs
+      #   hostPath:
+      #     path: /var/logs/Backendlogs
+      #     type: Directory
+
 
