@@ -11,7 +11,7 @@ services:
   # and Docker should build the image for the service 
   #from that Dockerfile.
     build: 
-      context: mernapp/backend
+      context: /home/ram/Documents/SPE_MajorProject_CouchPotato/mernapp/backend
       dockerfile: Dockerfile
     # This line maps the port 5000 on the container 
     #to the port 5000 on the host machine, which 
@@ -41,7 +41,7 @@ services:
   #will use an existing image named temp, 
   #which should already be built and available.
     build:
-      context: mernapp
+      context: /home/ram/Documents/SPE_MajorProject_CouchPotato/mernapp
       dockerfile: Dockerfile
     image: ramrodwal/client
     # This sets stdin_open to true, which means
