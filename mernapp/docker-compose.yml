@@ -10,7 +10,9 @@ services:
   # service is located in the ./backend directory, 
   # and Docker should build the image for the service 
   #from that Dockerfile.
-    build: ./backend
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
     # This line maps the port 5000 on the container 
     #to the port 5000 on the host machine, which 
     #allows incoming requests to the API server.
@@ -38,6 +40,9 @@ services:
   # This specifies that the react-app service 
   #will use an existing image named temp, 
   #which should already be built and available.
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: ramrodwal/client
     # This sets stdin_open to true, which means
     # that the container will keep stdin open 
