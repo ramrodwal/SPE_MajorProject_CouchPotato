@@ -1,2 +1,2 @@
 [client1]
-172.16.144.201 ansible_ssh_user=ram ansible_ssh_pass=ram121 sudo=ram ansible_sudo_pass=ram121 
+172.16.144.201 ansible_ssh_user=vartika ansible_ssh_pass=root121 sudo=vartika ansible_sudo_pass=root121
