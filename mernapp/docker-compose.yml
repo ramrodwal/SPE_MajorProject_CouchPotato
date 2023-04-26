@@ -11,12 +11,12 @@ services:
   # and Docker should build the image for the service 
   #from that Dockerfile.
     build: 
-      context: /home/ram/Documents/SPE_MajorProject_CouchPotato/mernapp/backend
+      context: /home/vartika/Documents/SPE_MajorProject_CouchPotato/mernapp/backend
       dockerfile: Dockerfile
     # This line maps the port 5000 on the container 
     #to the port 5000 on the host machine, which 
     #allows incoming requests to the API server.
-    image: ramrodwal/server
+    image: vartikach02/server:latest
     ports:
       - "5000:5000"
       # This specifies that the api-server service
@@ -41,9 +41,9 @@ services:
   #will use an existing image named temp, 
   #which should already be built and available.
     build:
-      context: /home/ram/Documents/SPE_MajorProject_CouchPotato/mernapp
+      context: /home/vartika/Documents/SPE_MajorProject_CouchPotato/mernapp
       dockerfile: Dockerfile
-    image: ramrodwal/client
+    image: vartikach02/client:latest
     # This sets stdin_open to true, which means
     # that the container will keep stdin open 
     #even if not attached. This can be useful for debugging.
