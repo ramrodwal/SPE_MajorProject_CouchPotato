@@ -102,6 +102,10 @@ router.post("/loginuser", [
   } catch (error) {
     console.log("there is an error");
     res.json({ success: false });
+    logger.log({
+      level: "info",
+      message: "Incorrect user details",
+  });
   }
 
 })
