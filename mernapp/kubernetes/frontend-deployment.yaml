@@ -14,9 +14,12 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: vartikach02/client:latest
+        image: ramrodwal/client:latest
         ports:
         - containerPort: 3000
+        # volumeMounts:
+        # - name: logs
+        #   mountPath: /app/logs
         resources:
             limits:
               cpu: "1"
@@ -24,6 +27,8 @@ spec:
             requests:
               cpu: "0.5"
               memory: "500Mi"
-        # env:
-        #     - name: REACT_APP_API_URL
-        #       value: "http://backend-service:90/api"
+      #   volumes:
+      # - name: logs
+      #   hostPath:
+      #     path: /var/logs/Frontendlogs
+      #     type: Directory

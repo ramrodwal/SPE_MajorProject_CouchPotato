@@ -15,6 +15,6 @@ spec:
   #   # - maxAgeSeconds: 3600
   #   - allowedOrigins:
   #       - http://192.168.49.2:32292/
-
+  #http://backend-service:90/api/..
 
   type: NodePort

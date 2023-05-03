@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import { PORT } from '../components/Constants';
 
 export default function Home() {
 
@@ -11,9 +12,9 @@ export default function Home() {
   const [food_items, setFlours] = useState([]);
 
   const loadData = async () => {
-    // let response = await fetch("http://localhost:5000/api/food-data", {
+    let response = await fetch("http://localhost:5000/api/food-data", {
 
-    let response = await fetch("http://192.168.49.2:30189/api/food-data", {
+    // let response = await fetch(`http://192.168.58.2:${PORT}/api/food-data`, {
     method: "POST",
       headers: {
       'Content-Type': 'application/json',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { PORT } from '../components/Constants';
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -10,32 +10,32 @@ export default function Signup() {
     name: '',
     email: '',
     password: '',
-    geolocation: ''
+    geolocation: '',
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const response = await fetch("http://localhost:5000/api/createuser", {
-    const response = await fetch("http://192.168.49.2:30189/api/createuser", {
+
+    const response = await fetch(`http://192.168.58.2:${PORT}/api/createuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
         name: credentials.name,
         email: credentials.email,
         password: credentials.password,
-        location: credentials.geolocation
+        location: credentials.geolocation,
       }),
-      mode: 'cors'
+      mode: 'cors',
     });
 
     const json = await response.json();
     console.log(json);
 
     if (!json.success) {
-      alert('Please enter valid credentials');
+      alert('enter valid credentials');
     } else {
       navigate('/Login');
     }
@@ -46,78 +46,77 @@ export default function Signup() {
   };
 
   return (
-    <>
-
-      <div className='signup-container'>
-
-        <div className='signup-form-container'>
-          <h1 style={{ textAlign: 'center' }}>Create User</h1>
-          <form onSubmit={handleSubmit}>
-            <div className='form-group'>
-              <label htmlFor='name' className='form-label'>
-                Name
-              </label>
-              <input
-                type='text'
-                className='form-control'
-                name='name'
-                value={credentials.name}
-                onChange={onChange}
-              />
+    <div
+      style={{
+        backgroundImage: `url("https://wallpapers.com/images/hd/grocery-items-circular-shape-31er4lglfoaqy7gb.jpg")`,
+        backgroundSize: 'cover',
+        height: '100vh',
+      }}
+    >
+      <div className="container">
+        <form onSubmit={handleSubmit} className="p-3 rounded shadow-sm">
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input type="text" className="form-control" name="name" value={credentials.name} onChange={onChange} />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              name="email"
+              value={credentials.email}
+              onChange={onChange}
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" className="form-text">
+              We'll never share your email with anyone else.
             </div>
-            <div className='form-group'>
-              <label htmlFor='exampleInputEmail1' className='form-label'>
-                Email address
-              </label>
-              <input
-                type='email'
-                className='form-control'
-                name='email'
-                value={credentials.email}
-                onChange={onChange}
-                id='exampleInputEmail1'
-                aria-describedby='emailHelp'
-              />
-              <div id='emailHelp' className='form-text'>
-                We'll never share your email with anyone else.
-              </div>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='exampleInputPassword1' className='form-label'>
-                Password
-              </label>
-              <input
-                type='password'
-                className='form-control'
-                name='password'
-                value={credentials.password}
-                onChange={onChange}
-                id='exampleInputPassword1'
-              />
-            </div>
-            <div className='form-group'>
-              <label htmlFor='exampleInputPassword1' className='form-label'>
-                Address
-              </label>
-              <input
-                type='text'
-                className='form-control'
-                name='geolocation'
-                value={credentials.geolocation}
-                onChange={onChange}
-                id='exampleInputPassword1'
-              />
-            </div>
-            <button type='submit' className='mt-3  btn btn-success' style={{ marginRight: "12px" }}>
-              Sign Up
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              value={credentials.password}
+              onChange={onChange}
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">
+              Address
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              name="geolocation"
+              value={credentials.geolocation}
+              onChange={onChange}
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-primary">
+              Submit
             </button>
-            <Link to='/Login' className='mt-3 btn btn-secondary'>
-              Already a User
+          </div>
+          <div className="text-center mt-3">
+            <span>Already a user?</span>
+            <Link to="/Login" className="ms-2 link-danger">
+              Login here
             </Link>
-
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
 }
