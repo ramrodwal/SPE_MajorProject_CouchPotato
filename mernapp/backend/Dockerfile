@@ -12,7 +12,7 @@ COPY package*.json ./
 # This line runs the npm install command in the Docker image to install the dependencies listed in the package.json file.
 RUN npm install
 
-RUN mkdir logs && chown -R node:node logs
+RUN  mkdir logs && chown -R node:node logs
 
 # This line installs the cors package, which is a middleware for enabling Cross-Origin Resource Sharing (CORS) in the Node.js application.
 RUN npm install cors
