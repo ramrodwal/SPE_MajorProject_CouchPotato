@@ -72,3 +72,6 @@ code {
 .btn-danger {
   margin-top: 1rem;
 }
+.tablenew:hover {
+  color: white;
+}

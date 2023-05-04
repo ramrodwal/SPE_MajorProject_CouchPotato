@@ -9,7 +9,7 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "ADD":
             //isse related code card.js me upar hai
-            return [...state, { id: action.id, name: action.name, qty: action.qty, price: action.price, img: action.img }]
+            return [...state, { id: action.id, name: action.name, qty: action.qty, price: action.price, img: action.img,total: action.total }]
         case "REMOVE":
             return state.filter((item, index) => index !== action.index);
         case "DROP":
@@ -43,6 +43,27 @@ export const CartProvider = ({ children }) => {
         </CartDispatchContext.Provider>
 
     )
+
+}
+
+export const addItemReducer=(state={ } , action)=>{
+
+    switch(action.type)
+    {
+        case 'ADD_ITEM_REQUEST' : return{
+            loading : true,
+            ...state
+        }
+        case 'ADD_ITEM_SUCCESS' : return{
+            loading : false ,
+            success : true,
+        }
+        case 'ADD_ITEM_FAILED' : return{
+            error : action.payload ,
+            loading : false
+        }
+        default : return state
+    }
 
 }
 

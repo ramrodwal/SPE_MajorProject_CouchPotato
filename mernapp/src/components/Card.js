@@ -7,14 +7,19 @@ export default function Card(props) {
     let data = useCart();
     const priceRef = useRef();
     const [qty, setQty] = useState(1);
-
+    
+    
+    const [newTotal,setNewTotal]=useState(props.foodItem.total);
     const handleAddToCart = async () => {
 
         // console.log(props.foodItem._id);
 
         let food = null
+        let updatedTotal = newTotal - qty;
+        console.log(updatedTotal);
+        setNewTotal(updatedTotal);
         for (const item of data) {
-            
+
             if (item.id === props.foodItem._id) {
                 // console.log(item.id)
                 food = item;
@@ -23,20 +28,21 @@ export default function Card(props) {
         }
 
         if (food) {
-            
+
             await dispatch({ type: "UPDATE", id: props.foodItem._id, price: finalPrice, qty: qty });
             console.log(food)
             return
         }
-
-        await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.productName, price: finalPrice, qty: qty, img: props.foodItem.image })
+        // Update the total property of the props.foodItem object
+        
+        await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.productName, price: finalPrice, qty: qty, img: props.foodItem.image, total: updatedTotal })
 
         //console.log(data)
     }
 
 
 
-    
+
 
     // console.log(props.foodItem.price);
     let finalPrice = qty * parseInt(props.foodItem.price);   //This is where Price is changing
@@ -68,6 +74,7 @@ export default function Card(props) {
                         <div className='d-inline w-100 fs-5'>
                             ₹{finalPrice}/-
                         </div>
+                        <div style={{ "height": "50px" }}><h5 className="card-title" >Items Left: {newTotal} </h5></div>
                     </div>
                     <hr></hr>
                     <button className='btn btn-success justify-center ms-2' onClick={handleAddToCart}>Add To Cart</button>

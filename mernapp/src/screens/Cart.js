@@ -1,7 +1,7 @@
 import React, { useState }  from 'react'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
 import { FaTrash } from 'react-icons/fa';
-import { PORT } from '../components/Constants';
+
 
 export default function Cart() {
   const [cartData, setData] = useState([]);
@@ -15,19 +15,11 @@ export default function Cart() {
       </div>
     )
   }
-  // const handleRemove = (index)=>{
-  //   console.log(index)
-  //   dispatch({type:"REMOVE",index:index})
-  // }
-  
+
   
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    // console.log(data,localStorage.getItem("userEmail"),new Date())
     let response = await fetch("http://localhost:5000/api/orderData", {
-      // let response = await fetch(`http://192.168.58.2:${PORT}/api/orderData`, {
-      // credentials: 'include',
-      // Origin:"http://localhost:3000/login",
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +46,7 @@ export default function Cart() {
 
       {console.log(data)}
       <div className='container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md' >
-        <table className='table table-hover '>
+        <table className='table tablenew' style={{color:"white"}}>
           <thead className=' text-success fs-4'>
             <tr>
               <th scope='col' >#</th>
@@ -76,7 +68,7 @@ export default function Cart() {
                 {/* <td ><button type="button" className="btn p-0 text-white" onClick={() => { dispatch({ type: "REMOVE", index: index }) }} >X</button> </td></tr> */}
                 
                 <td >
-                  <button type="" className="btn p-0" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}><FaTrash />
+                  <button type="" className="btn p-0" style={{color:"white"}} onClick={() => { dispatch({ type: "REMOVE", index: index }) }}><FaTrash />
 </button>
 
 

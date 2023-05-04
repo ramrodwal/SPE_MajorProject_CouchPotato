@@ -13,8 +13,6 @@ export default function Home() {
 
   const loadData = async () => {
     let response = await fetch("http://localhost:5000/api/food-data", {
-
-    // let response = await fetch(`http://192.168.58.2:${PORT}/api/food-data`, {
     method: "POST",
       headers: {
       'Content-Type': 'application/json',
@@ -36,6 +34,7 @@ useEffect(() => {
 }, [])
 //  ^ yaha par empty array yani empty dependency dene ka ye matlb 
 //hai ki on first render jo bhi useeffect me functions die hai wo load hojae
+ 
 return (
   //we can send only one div in return and if we want multiple divs we need nested divs
   <div>
