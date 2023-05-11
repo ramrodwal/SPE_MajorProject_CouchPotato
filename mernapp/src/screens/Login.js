@@ -1,65 +1,60 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { PORT } from '../components/Constants';
 
-export default function Login() {
-
+const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    //this is a synthetic event i.e preventDefault
     e.preventDefault();
     // const response = await fetch("http://localhost:5000/api/loginuser", {
     const response = await fetch(`http://192.168.49.2:${PORT}/api/loginuser`, {
       method: 'POST',
-      //specified the header in thunderclient
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       },
-      //json data ko stringify krke bhejte hai kyuki yahi tarika hota hai
       body: JSON.stringify({ email: credentials.email, password: credentials.password })
     });
 
-    const json = await response.json()
+    const json = await response.json();
     console.log(json);
 
     if (!json.success) {
-      alert("enter valid credentials")
-    }
-    else{
+      alert("Invalid credentials");
+    } else {
       localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("authToken", json.authToken);
       console.log(localStorage.getItem("authToken"));
       navigate("/");
     }
-
   }
 
   const onChange = (event) => {
-    setCredentials({ ...credentials, [event.target.name]: event.target.value })
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
   }
 
   return (
-    <div>
-      <div className='container'>
+    <div className='login-container' style={{ backgroundImage: `url("https://assets.bonappetit.com/photos/628e476015a4f97a23e2b522/16:9/w_2560%2Cc_limit/0525-hr-imperfect-foods-lede.jpg")` }}>
+      <div className='form-container'>
+        <h1 className='login-title'>Welcome back!</h1>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
+          <div className="form-group">
             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
             <input type="email" className="form-control" name='email' value={credentials.email} onChange={onChange} id="exampleInputEmail1" aria-describedby="emailHelp" />
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
-          <div className="mb-3">
+          <div className="form-group">
             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
             <input type="password" className="form-control" name='password' value={credentials.password} onChange={onChange} id="exampleInputPassword1" />
           </div>
-          <button type="submit" className="m-3 btn btn-success">Submit</button>
-          <Link to="/createuser" className='m-3 btn btn-danger'>I'm a new user</Link>
+          <button type="submit" className="btn btn-success">Submit</button>
+          <Link to="/createuser" className='btn btn-danger'>I'm a new user</Link>
         </form>
-
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Login;

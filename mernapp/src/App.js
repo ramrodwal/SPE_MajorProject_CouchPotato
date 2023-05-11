@@ -13,6 +13,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
 import Signup from './screens/Signup';
 import { CartProvider } from './components/ContextReducer';
 import MyOrder from './screens/MyOrder';
+import AddItem from './screens/AddItem';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Route exact path='/Login' element = {<Login/>}></Route>
       <Route exact path='/createuser' element = {<Signup/>}></Route>
       <Route exact path='/myOrder' element = {<MyOrder/>}></Route>
+      <Route exact path='/AddItem' element = {<AddItem/>}></Route>
     </Routes>
 
     </div>

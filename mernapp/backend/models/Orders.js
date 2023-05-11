@@ -12,6 +12,10 @@ const OrderSchema = new Schema({
         type: Array,
         required: true,
     },
+    total: {
+        type: String,
+        required: true
+    }
 
 });
 

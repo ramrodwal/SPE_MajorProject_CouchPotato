@@ -6,7 +6,7 @@ const mongoDB = async () => {
         else {
             console.log("Connected to database");
             // ab ye line mongoose se connect hone k bad data fetch krne k lie
-            const food_items = await mongoose.connection.db.collection("food_items");
+            const food_items = await mongoose.connection.db.collection("groceries");
             food_items.find({}).toArray(async function (err, data) {
                 const item_category = await mongoose.connection.db.collection("item_category");
                 item_category.find({}).toArray(function (err, catData) {
@@ -16,7 +16,7 @@ const mongoDB = async () => {
                         //ek global variable banaya hai item_category nam se aur yahi syntax hai global variable banane ka
                         global.food_items = data;
                         global.item_category = catData;
-                        // console.log(global.food_items);
+                         console.log(global.food_items);
 
                     }
 
